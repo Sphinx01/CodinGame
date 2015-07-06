@@ -1,4 +1,7 @@
-import java.util.Scanner;
+
+import java.util.*;
+import java.io.*;
+import java.math.*;
 
 class Solution {
 
@@ -9,16 +12,12 @@ class Solution {
         for (int i = 0; i < N; i++) {
             Pi[i] = in.nextInt();
         }
-        int help;
-        int min = (Pi[1] - Pi[0]>0)?Pi[1] - Pi[0]:Pi[0] - Pi[1];
-        for(int i = 0; i < N - 1; i++){
-        	for(int j = i + 1; j < N; j++){
-        		help = (Pi[i] - Pi[j]>0)?Pi[i] - Pi[j]:Pi[j] - Pi[i];
-        		if(help<min)
-        		    min = help;
-        	}
+        Arrays.sort(Pi);
+        int min = Pi[1] - Pi[0];
+        for(int i = 0; i < N-1; i++){
+        	if(Pi[i+1] - Pi[i] < min)
+        		min = Pi[i+1] - Pi[i];
         }
-        
         System.out.println(min);
     }
 
